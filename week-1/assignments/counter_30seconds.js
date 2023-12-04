@@ -12,6 +12,7 @@ function countdown() {
     if (timeleft === 0) {
         stopTimer(timer)
     }
+    console.clear();
     console.log(timeleft);
     timeleft--;
 }
