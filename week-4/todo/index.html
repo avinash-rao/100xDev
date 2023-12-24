@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- Hide the input boxes to show the todos from state directly -->
+<!--<input id="title" type="text" placeholder="title"><br>-->
+<!--<input id="desc" type="text" placeholder="description"><br>
+<button onclick="addTodo()">Add todo</button> -->
+
+<div id="container">
+
+</div>
+
+<script>
+
+    globalId = 1;
+    function createChild(title, description, id) {
+        const div = document.createElement('div');
+        const firstChild = document.createElement('div');
+        firstChild.innerHTML = title;
+        const secondChild = document.createElement('div');
+        secondChild.innerHTML = description;
+        const thirdChild = document.createElement('button');
+        thirdChild.innerHTML = 'Mark as done';
+        thirdChild.setAttribute('onclick', `markAsDone(${id})`);
+        div.appendChild(firstChild);
+        div.appendChild(secondChild);
+        div.appendChild(thirdChild);
+        div.setAttribute('id', id);
+        return div;
+    }
+
+    function markAsDone(todoId) {
+        const parent = document.getElementById(todoId);
+        parent.children[2].innerHTML = 'Done!';
+    }
+
+    function addTodo() {
+        const title = document.getElementById('title').value;
+        const desc = document.getElementById('desc').value;
+
+        const container = document.getElementById('container');
+        container.appendChild(createChild(title, desc, globalId));
+        globalId++;
+    }
+
+    // This is how react would be having a state. On update of state, the difference is calculated and html is update only for the updated elements.
+    // Any time the new state comes, you need to have the old state for comparison.
+    function updateDomAccToState(state) {
+        const parent = document.getElementById('container')
+        parent.innerHTML = '';
+        for(let i = 0; i < state.length; i++) {
+            const child = createChild(state[i].title, state[i].description, state[i].id);
+            parent.appendChild(child);
+        }
+    }
+
+    updateDomAccToState([{
+        title: 'test',
+        description: 'desc',
+        id: 1
+    }])
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sum of two numbers</title>
+</head>
+<body>
+<input id="input1" type="text" placeholder="First number"><br>
+<input id="input2" type="text" placeholder="Second number"><br>
+<button onclick="sum()">Calculate Sum</button>
+<br>
+<p id="sum"></p>
+
+<script>
+    function sum() {
+        let input1 = document.getElementById('input1');
+        let input2 = document.getElementById('input2');
+        let sumElement = document.getElementById('sum');
+        sumElement.innerHTML = input1 + input2
+    }
+</script>
+</body>
+</html>
