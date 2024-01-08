@@ -1,9 +1,11 @@
 import './App.css'
 import {CreateTodo} from "./components/CreateTodo.jsx";
 import {Todos} from "./components/Todos.jsx";
+import {useState} from "react";
 
 function App() {
-    const [todos, setTodos] = setState()
+    const [todos, setTodos] = useState([]);
+
     return <div>
         <CreateTodo />
         <Todos todos={[

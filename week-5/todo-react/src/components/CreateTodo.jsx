@@ -1,5 +1,7 @@
 
 // modern way to expose functions is using export keyword before them
+import {useState} from "react";
+
 export function CreateTodo() {
     // react-query
     const [title, setTitle] = useState("");
